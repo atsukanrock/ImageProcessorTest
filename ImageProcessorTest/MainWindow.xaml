@@ -1,0 +1,57 @@
+﻿<Window x:Class="ImageProcessorTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Silver" BorderThickness="1">
+            <Grid>
+                <Image x:Name="SourceImage"
+                       Stretch="Uniform"
+                       StretchDirection="Both"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+                <TextBlock x:Name="PleaseDropMessageTextBlock"
+                           Text="Drop an image file here"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="24" />
+                <!-- Drop target -->
+                <Rectangle Fill="Transparent"
+                           AllowDrop="True"
+                           DragOver="SourceImageOnPreviewDragOver"
+                           Drop="SourceImageOnDrop" />
+            </Grid>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Silver" BorderThickness="1">
+            <Image x:Name="DestImage"
+                   Stretch="Uniform"
+                   StretchDirection="Both"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+        </Border>
+        <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <CheckBox x:Name="AlphaCheckBox" Content="Alpha" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="BrightnessCheckBox" Content="Brightness" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="ContrastCheckBox" Content="Contrast" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="FilterComicCheckBox" Content="Filter: Comic" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="FilterGothamCheckBox" Content="Filter: Gotham" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="FilterLoSatchCheckBox" Content="Filter: LoSatch" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="FilterHiSatchCheckBox" Content="Filter: HiSatch" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="FilterPolaroidCheckBox" Content="Filter: Polaroid" Margin="10" VerticalAlignment="Center" />
+            <CheckBox x:Name="GaussianBlurCheckBox" Content="GaussianBlur" Margin="10" VerticalAlignment="Center" />
+            <Button Content="Start processing" Click="ProcessButtonOnClick" Padding="15,5,15,5" Margin="10"
+                    VerticalAlignment="Center" />
+        </WrapPanel>
+        <TextBox x:Name="LogTextBox" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsReadOnly="True"
+                 VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" />
+    </Grid>
+</Window>
